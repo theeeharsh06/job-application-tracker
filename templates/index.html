@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack | Premium Application Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-mode">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="app-container">
+        <aside class="sidebar glass">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">JobTrack</span>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="fas fa-briefcase"></i> My Applications</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-profile">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" class="avatar">
+                <div class="user-info">
+                    <p class="user-name">Job Seeker</p>
+                    <p class="user-status">Active</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="welcome-text">
+                    <h1>Welcome Back!</h1>
+                    <p>Track your journey to your dream career.</p>
+                </div>
+                <div class="top-actions">
+                    <div class="search-container glass">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="companySearch" placeholder="Search applications...">
+                    </div>
+                    <button class="btn btn-primary" id="addAppBtn">
+                        <i class="fas fa-plus"></i> Add Application
+                    </button>
+                </div>
+            </header>
+
+            <section class="filters-section">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-status="all">All</button>
+                    <button class="filter-btn" data-status="Applied">Applied</button>
+                    <button class="filter-btn" data-status="Interviewing">Interviewing</button>
+                    <button class="filter-btn" data-status="Offer">Offer</button>
+                    <button class="filter-btn" data-status="Rejected">Rejected</button>
+                </div>
+            </section>
+
+            <section class="applications-grid" id="applicationsGrid">
+                <!-- Cards will be injected here -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing applications -->
+    <div id="appModal" class="modal">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h2>Add New Application</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="applicationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" required placeholder="e.g. Google">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" id="position" required placeholder="e.g. Software Engineer">
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="platform">Platform</label>
+                        <input type="text" id="platform" placeholder="e.g. LinkedIn, Indeed">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="Applied">Applied</option>
+                            <option value="Interviewing">Interviewing</option>
+                            <option value="Offer">Offer</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="link">Application Link</label>
+                    <input type="url" id="link" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="3" placeholder="Enter any extra details..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
